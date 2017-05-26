@@ -44,6 +44,7 @@
           <li><a href="/likes">Likes</a></li>
           <li><a href="/photos">Photos</a></li>
           <li><a href="/rails/info">Sitemap</a></li>
+          <li><a href="/users">Users</a></li>
         </ul>
 
 
@@ -58,7 +59,13 @@
             </a></li>
           <% else %>
         <!-- else edit/sign out -->
-            <li><a href="/users/edit">
+              <li><a href="/users/<%= current_user.id %>">
+              My Photos
+              </a></li>
+              <li><a href="/my_likes">
+              My Likes
+              </a></li>
+              <li><a href="/users/edit">
               <%= current_user.username %>
               </a></li>
               <li><a href="/users/sign_out" data-method="delete" rel="nofollow">

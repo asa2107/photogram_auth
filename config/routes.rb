@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
+  get "/my_likes", :controller => "users", :action => "mylikes"
+
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
@@ -57,7 +61,11 @@ Rails.application.routes.draw do
   #post "/create_photo", :controller => "photos", :action => "create"
 
   # READ
-  get "/users", :controller => "users", :action => "index"
+
+  #devise_scope :user do
+  #  get "/users", :controller => "devise", :action => "index"
+  #end
+  #get "/users", :controller => "devise", :action => "index"
   #get "/photos/:id", :controller => "photos", :action => "show"
 
   # UPDATE
