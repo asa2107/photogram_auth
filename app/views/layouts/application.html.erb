@@ -68,9 +68,12 @@
               <li><a href="/users/edit">
               <%= current_user.username %>
               </a></li>
-              <li><a href="/users/sign_out" data-method="delete" rel="nofollow">
-                Sign out
-              </a></li>
+              <li>
+                <%= awesome_link('fa-sign-out', '/users/sign_out') %>
+                <!--<a href="/users/sign_out" data-method="delete" rel="nofollow">-->
+                <!--Sign out-->
+              <!--</a>-->
+            </li>
           <% end %>
         </ul>
 
