@@ -26,8 +26,9 @@
               <% photo.comments.each do |comment| %>
                 <p><%= comment.user.username %> commented <%= comment.body %></p>
               <% end %>
-              <form action ="/create_comment" method ="post">
+              <form action ="/create_comment">
                 <input type="text" name="body" placeholder="Add a comment..." class="form-control">
+                <input name="photo_id" type="hidden" value="<%= photo.id %>">
                 <button class="btn btn-success">
                   <i class="fa fa-commenting-o" aria-hidden="true"></i>
                 </button>

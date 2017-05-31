@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @comment.photo_id = @photos.id
+    @comment.photo_id = params[:photo_id]
     @comment.body = params[:body]
     @comment.user_id = current_user.id
     save_status = @comment.save
