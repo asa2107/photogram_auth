@@ -47,7 +47,6 @@
           <li><a href="/users">Users</a></li>
         </ul>
 
-
         <ul class="nav navbar-nav navbar-right">
           <!-- iF NO USER THEN SIGN UP/IN -->
           <% if current_user == nil %>
@@ -69,19 +68,12 @@
               <%= current_user.username %>
               </a></li>
               <li>
-                <%= awesome_link('fa-sign-out', '/users/sign_out') %>
-                <!--<a href="/users/sign_out" data-method="delete" rel="nofollow">-->
-                <!--Sign out-->
-              <!--</a>-->
-            </li>
+                <a href="/users/sign_out" data-method="delete" rel="nofollow">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </a>
+              </li>
           <% end %>
         </ul>
-
-
-        <!-- <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
-        </ul> -->
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>

@@ -12,6 +12,7 @@
             <th>Image</th>
             <th>User</th>
             <th>Created at</th>
+            <th>Comments</th>
             <th>Actions</th>
           </tr>
 
@@ -22,7 +23,28 @@
             <td><%= photo.user.username %></td>
             <td><%= time_ago_in_words(photo.created_at) %> ago</td>
             <td>
+              <% photo.comments.each do |comment| %>
+                <p><%= comment.user.username %> commented <%= comment.body %></p>
+              <% end %>
+              <form action ="/create_comment" method ="post">
+                <input type="text" name="body" placeholder="Add a comment..." class="form-control">
+                <button class="btn btn-success">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                </button>
+              </form>
+            </td>
+            <td>
               <a href="/photos/<%= photo.id %>" class="btn btn-warning">Show</a>
+              <% a = 1 %>
+              <% photo.likes.each do |like| %>
+                <% if like.user_id == current_user.id %>
+                  <%= awesome_link('fa-heart', "/delete_like/#{like.id}") %>
+                  <% a = 0 %>
+                <% end %>
+              <% end %>
+              <% if a == 1 %>
+                <%= awesome_link('fa-heart-o', "/create_like/#{photo.id}") %>
+              <% end %>
               <% if photo.user_id == current_user.id %>
               <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
               <% end %>
