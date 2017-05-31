@@ -2,6 +2,7 @@
   <div class="panel-heading">
       <%= awesome_link('fa-plus', '/photos/new') %>
   </div>
+
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
@@ -10,6 +11,7 @@
             <th>Caption</th>
             <th>Image</th>
             <th>User</th>
+            <th>Created at</th>
             <th>Actions</th>
           </tr>
 
@@ -17,17 +19,18 @@
           <tr>
             <td><%= photo.caption %></td>
             <td><img src="<%= photo.image %>" width ="200"></td>
-            <td><%= photo.user_id %></td>
+            <td><%= photo.user.username %></td>
+            <td><%= time_ago_in_words(photo.created_at) %> ago</td>
             <td>
-              <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+              <a href="/photos/<%= photo.id %>" class="btn btn-warning">Show</a>
               <% if photo.user_id == current_user.id %>
-                <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
+              <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
               <% end %>
               <% if photo.user_id == current_user.id %>
                 <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
               <% end %>
             </td>
-            </tr>
+          </tr>
           <% end %>
         </table>
       </div>
